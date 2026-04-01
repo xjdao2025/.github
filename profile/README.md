@@ -1,72 +1,101 @@
-# Web5 fans
+# XJDAO
 
-Web5 is a forward-looking vision that seeks to create an extra-decentralized, privacy-first internet—one where users control their identity and own their data by emphasizing on-chain verification and off-chain computation.
+[![Website](https://img.shields.io/badge/xjdao.xyz-1fb931?style=flat-square&logo=discourse&logoColor=white)](https://xjdao.xyz/)
+[![AT Protocol](https://img.shields.io/badge/Built%20on-AT%20Protocol-blue?style=flat-square&logo=bluesky&logoColor=white)](https://atproto.com/)
 
-| Repo | Description |
-| --- | --- |
-| [web5-wips](https://github.com/web5fans/web5-wips) | Web5 Improvement Proposals (WIPs) that describe standards and protocols for the web5 ecosystem. |
+XJDAO is a social network platform designed for rural builders and innovators. We bridge the digital and physical worlds to create new forms of community that connect cloud-based collaboration with ground-level rural development. Our mission is to build digital infrastructure that empowers young talent to participate meaningfully in rural revitalization.
 
-## Infrastructure
+## Overview
 
-### ATProto related
+XJDAO is built on the [AT Protocol](https://atproto.com/) (the open protocol behind Bluesky), providing a decentralized foundation for social networking. The platform enables:
 
-| Repo | Description |
-| --- | --- |
-| [PDS](https://github.com/web5fans/rsky) | A Rust SDK for building Web5 applications, providing tools and libraries to interact with decentralized identities and data storage. |
-| [Relayer](https://github.com/web5fans/indigo) | Go source code for Bluesky's atproto relayer service. |
-| [Web5 SDK](https://github.com/web5fans/web5-api) | Common code for Web5 App. |
+- **Decentralized Identity**: Using PLC (Placeholder) DID method for persistent, portable identities
+- **Federated Architecture**: Distributed Personal Data Servers (PDS) for user data sovereignty
+- **Rich Social Features**: Timeline feeds, social graphs, and content discovery
+- **Custom App Views**: Tailored experiences for rural development communities
 
-### did:ckb related
+## Architecture
 
-| Repo | Description |
-| --- | --- |
-| [did ckb contract](https://github.com/web5fans/did-ckb) | CKB contract code for did:ckb. |
-| [did ckb indexer](https://github.com/web5fans/web5-indexer) | It's a indexer for did:ckb. The indexer would follow every did transaction on [CKB](https://www.nervos.org/ckbpage) blockchain. And indexing every did record through path `<server url>\{:did}`. |
-| [did ckb cache](https://github.com/web5fans/web5-did-cache) | Cache service for did:ckb, create did:ckb with HTTP API. |
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                              XJDAO Architecture                             │
+└─────────────────────────────────────────────────────────────────────────────┘
 
-### Components
+┌─────────────────┐      ┌─────────────────┐      ┌─────────────────────────┐
+│   PLC Server    │────▶│  PDS (Personal  │────▶│   AppView (BSKY)        │
+│  (DID Method)   │      │  Data Server)   │      │   - Timeline            │
+│                 │      │                 │      │   - Social Graph        │
+└─────────────────┘      └─────────────────┘      └─────────────────────────┘
+                                                          │
+                                                          ▼
+                                               ┌─────────────────────────┐
+                                               │     Post Cache          │
+                                               │   (Content Indexing)    │
+                                               └───────────┬─────────────┘
+                                                           │
+                                                           |
+         ┌─────────────────────┐                           |
+         │  Xiangjiandao Core  │                           |
+         │   (Backend API)     │                           |
+         │                     │                           |
+         └──────────┬──────────┘                           |
+                    │          ----------------------------
+                    │ API      | API
+                    ▼          ▼
+    ┌─────────────────────────────┐         ┌─────────────────────────────┐
+    │      Social App             │         │      Social App Admin       │
+    │   (Web Frontend - Users)    │         │    (Admin Dashboard)        │
+    │                             │         │                             │
+    └─────────────────────────────┘         └─────────────────────────────┘
+```
 
-| Repo | Description |
-| --- | --- |
-| [Micro Pay](https://github.com/web5fans/micro-pay) | Service can transfer little ckb to other user. |
-| [Dao Vote Contract](https://github.com/web5fans/ckb-dao-vote) | Vote contract on ckb. |
-| [Example code](https://github.com/web5fans/web5-components) | Example code for address bind and vote. |
 
-### Framework and Tools
+## Repositories
 
-| Repo | Description |
-| --- | --- |
-| [Modules](https://github.com/web5fans/modules) | This project provides Federated Modules and a Demo to help developers build Web5 Applications easily. |
-| [Keystore](https://keystore.web5.fans) | A simple web wallet to manager sign key. |
-| [Console](https://console.web5.fans) | A full Web5 demo app that composes all basic modules of web5. |
+| Repository | Description | Docker Image | Helm Chart |
+|------------|-------------|--------------|------------|
+| [atproto](https://github.com/xjdao2025/atproto) | AT Protocol infrastructure (BSKY + PDS) | `bsky`, `pds` | - |
+| [did-method-plc](https://github.com/did-method-plc/did-method-plc) | DID PLC server for decentralized identity | `did-method-plc` | - |
+| [post_cache](https://github.com/web5fans/post_cache) | Application view and content caching layer | `post_cache` | - |
+| [social-app](https://github.com/web5fans/social-app) | Main frontend application (users) | `social-app` | `charts/social-app` |
+| [social-app-admin](https://github.com/web5fans/social-app-admin) | Admin dashboard frontend | `social-app-admin` | `charts/social-app-admin` |
+| [xiangjiandao-core](https://github.com/web5fans/xiangjiandao-core) | Backend API and core services | `xiangjiandao-core` | `xiangjiandao` |
+| [web5_deploy](https://github.com/web5fans/web5_deploy) | Infrastructure-as-code and deployment configs | N/A | N/A |
 
-## Applications
+## Deployment
 
-[![Portal](https://img.shields.io/badge/Portal-1fb931?style=flat-square&logo=discourse&logoColor=white)](https://me.web5.fans/)
+### AT Protocol Services
 
-Web5 User Portal - A user-friendly entry point to the Web5 ecosystem.
-| Repo | Description |
-| --- | --- |
-| [portal](https://github.com/web5fans/modules/tree/main/apps/portal) | Web5 User Portal |
+The core AT Protocol infrastructure (PLC, PDS, BSKY, post_cache) is deployed using Docker Compose configurations in the [web5_deploy](https://github.com/web5fans/web5_deploy) repository.
 
-[![bbs.fans](https://img.shields.io/badge/bbs.fans-1fb931?style=flat-square&logo=discourse&logoColor=white)](https://www.bbs.fans/)
+### Application Services
 
-A friendly community for Web5 enthusiasts to discuss, share, and learn about the latest developments in decentralized web technologies.
+The custom XJDAO services (social-app, social-app-admin, xiangjiandao-core) are deployed via Helm charts.
 
-| Repo | Description |
-| --- | --- |
-| [bbs](https://github.com/web5fans/bbs) | app view |
-| [bbs-fe](https://github.com/web5fans/bbs-fe) | app Front-end |
-| [bbs_deploy](https://github.com/web5fans/bbs_deploy) | deployment |
 
-[![xjdao.xyz](https://img.shields.io/badge/xjdao.xyz-1fb931?style=flat-square&logo=discourse&logoColor=white)](https://xjdao.xyz/)
+See individual repository READMEs for detailed deployment instructions.
 
-| Repo | Description |
-| --- | --- |
-| [atproto](https://github.com/web5fans/atproto) | atproto |
-| [plc](https://github.com/did-method-plc/did-method-plc) | did server |
-| [post_cache](https://github.com/web5fans/post_cache) | app view |
-| [web5_deploy](https://github.com/web5fans/web5_deploy) | atproto deployment |
-| [social-app](https://github.com/web5fans/social-app) | xjd Front-end |
-| [social-app-admin](https://github.com/web5fans/social-app-admin) | xjd-admin Front-end |
-| [xiangjiandao-core](https://github.com/web5fans/xiangjiandao-core) | xjd back-end |
+## Technology Stack
+
+- **Protocol**: AT Protocol
+- **Identity**: DID PLC
+- **Backend**: Node.js / Rust / C#
+- **Frontend**: React
+- **Infrastructure**: Docker, Kubernetes, Helm
+- **Database**: PostgreSQL, Redis
+
+## Contributing
+
+We welcome contributions from developers passionate about rural development and decentralized social networking. Please see individual repository contribution guidelines.
+
+## License
+
+See individual repositories for license information.
+
+## Acknowledgments
+
+XJDAO is built upon the open-source [AT Protocol](https://atproto.com/) and is inspired by the [Bluesky](https://bsky.app/) project's vision for a decentralized social web.
+
+---
+
+**Connect with us**: [xjdao.xyz](https://xjdao.xyz/)
