@@ -56,17 +56,17 @@ XJDAO is built on the [AT Protocol](https://atproto.com/) (the open protocol beh
 |------------|-------------|--------------|------------|
 | [atproto](https://github.com/xjdao2025/atproto) | AT Protocol infrastructure (BSKY + PDS) | `bsky`, `pds` | - |
 | [did-method-plc](https://github.com/did-method-plc/did-method-plc) | DID PLC server for decentralized identity | `did-method-plc` | - |
-| [post_cache](https://github.com/web5fans/post_cache) | Application view and content caching layer | `post_cache` | - |
-| [social-app](https://github.com/web5fans/social-app) | Main frontend application (users) | `social-app` | `charts/social-app` |
-| [social-app-admin](https://github.com/web5fans/social-app-admin) | Admin dashboard frontend | `social-app-admin` | `charts/social-app-admin` |
-| [xiangjiandao-core](https://github.com/web5fans/xiangjiandao-core) | Backend API and core services | `xiangjiandao-core` | `xiangjiandao` |
-| [web5_deploy](https://github.com/web5fans/web5_deploy) | Infrastructure-as-code and deployment configs | N/A | N/A |
+| [post_cache](https://github.com/xjdao2025/post_cache) | Application view and content caching layer | `post_cache` | - |
+| [social-app](https://github.com/xjdao2025/social-app) | Main frontend application (users) | `social-app` | `charts/social-app` |
+| [social-app-admin](https://github.com/xjdao2025/social-app-admin) | Admin dashboard frontend | `social-app-admin` | `charts/social-app-admin` |
+| [xiangjiandao-core](https://github.com/xjdao2025/xiangjiandao-core) | Backend API and core services | `xiangjiandao-core` | `xiangjiandao` |
+| [web5_deploy](https://github.com/xjdao2025/web5_deploy) | Infrastructure-as-code and deployment configs | N/A | N/A |
 
 ## Deployment
 
 ### AT Protocol Services
 
-The core AT Protocol infrastructure (PLC, PDS, BSKY, post_cache) is deployed using Docker Compose configurations in the [web5_deploy](https://github.com/web5fans/web5_deploy) repository.
+The core AT Protocol infrastructure (PLC, PDS, BSKY, post_cache) is deployed using k8s yamls in the [web5_deploy](https://github.com/xjdao2025/web5_deploy) repository.
 
 ### Application Services
 
@@ -82,7 +82,7 @@ See individual repository READMEs for detailed deployment instructions.
 - **Backend**: Node.js / Rust / C#
 - **Frontend**: React
 - **Infrastructure**: Docker, Kubernetes, Helm
-- **Database**: PostgreSQL, Redis
+- **Database**: PostgreSQL, Redis, RabbitMQ
 
 ## Contributing
 
