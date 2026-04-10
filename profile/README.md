@@ -55,7 +55,7 @@ XJDAO is built on the [AT Protocol](https://atproto.com/) (the open protocol beh
 | Repository | Description | Docker Image | Helm Chart |
 |------------|-------------|--------------|------------|
 | [atproto](https://github.com/xjdao2025/atproto) | AT Protocol infrastructure (BSKY + PDS) | `bsky`, `pds` | - |
-| [did-method-plc](https://github.com/did-method-plc/did-method-plc) | DID PLC server for decentralized identity | `did-method-plc` | - |
+| [did-method-plc](https://github.com/xjdao2025/did-method-plc) | DID PLC server for decentralized identity | `did-method-plc` | - |
 | [post_cache](https://github.com/xjdao2025/post_cache) | Application view and content caching layer | `post_cache` | - |
 | [social-app](https://github.com/xjdao2025/social-app) | Main frontend application (users) | `social-app` | `charts/social-app` |
 | [social-app-admin](https://github.com/xjdao2025/social-app-admin) | Admin dashboard frontend | `social-app-admin` | `charts/social-app-admin` |
